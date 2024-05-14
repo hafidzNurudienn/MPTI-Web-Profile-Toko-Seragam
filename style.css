@@ -1,4 +1,4 @@
-/* CSS FONTS*/
+/* CSS FONTS */
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
@@ -107,7 +107,7 @@
   font-style: italic;
 }
 
-/* CSS WEB*/
+/* CSS WEB */
 :root {
   --primary: #eeddcd;
   --bg: #eee0cd;
@@ -175,7 +175,7 @@ body {
 }
 
 .navbar .navbar-nav a:hover::after {
-  transform: scaleX(0.5);
+  transform: scaleX(1);
 }
 
 .navbar .navbar-extra a {
@@ -189,4 +189,83 @@ body {
 
 #hamburger-menu {
   display: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body > .container {
+  padding-bottom: 100px; /* Height of the footer */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  padding-bottom: 0;
+  border-top: 1px solid #ddd;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-3 {
+  width: 25%;
+  padding: 20px;
+}
+
+.cabang {
+  /* Remove the width: 20%; */
+}
+
+h5 {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+a:hover {
+  color: #23527c;
+}
+
+.footer-copyright {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
 }
