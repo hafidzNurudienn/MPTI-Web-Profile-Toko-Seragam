@@ -16,14 +16,17 @@ $sql = "SELECT p.id,
        p.nama, 
        p.deskripsi, 
        p.detail_produk,
-       GROUP_CONCAT(DISTINCT u.ukuran ORDER BY u.urutan ASC SEPARATOR ',') AS ukuran,
-       GROUP_CONCAT(DISTINCT u.harga ORDER BY u.urutan ASC SEPARATOR ',') AS harga,
-       GROUP_CONCAT(DISTINCT g.gambar ORDER BY g.id ASC SEPARATOR ',') AS gambar
-       FROM produk p
-       JOIN ukuran u ON p.id = u.produk_id
-       JOIN gambar g ON p.id = g.produk_id
-       WHERE p.id = ?
-       GROUP BY p.id, p.nama, p.deskripsi, p.detail_produk";
+       (SELECT GROUP_CONCAT(u.ukuran ORDER BY u.urutan ASC SEPARATOR ',')
+        FROM ukuran u
+        WHERE u.produk_id = p.id) AS ukuran,
+       (SELECT GROUP_CONCAT(u.harga ORDER BY u.urutan ASC SEPARATOR ',')
+        FROM ukuran u
+        WHERE u.produk_id = p.id) AS harga,
+       (SELECT GROUP_CONCAT(g.gambar ORDER BY g.id ASC SEPARATOR ',')
+        FROM gambar g
+        WHERE g.produk_id = p.id) AS gambar
+        FROM produk p
+        WHERE p.id = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $productId);
